@@ -1,14 +1,22 @@
 #!/bin/bash
 #
-#
+#See skript installib php
 #
 php=$(dpkg-query -W -f='${status}' php7.3 2>/dev/null | grep -c "ok installed")
+#kontrollib kas php7.3 on juba installitud või mitte
 if [ $php -eq 0 ]; then
+#kui $php võrdub nulliga siis ei ole php7.3 installitud
 	echo "PHP installitakse"
+#ütleb kasutajale et php installitakse
 apt update
+#uuendab repositore
 apt install php7.3
+#installib php7.3
 apt install php7.3-cli php7.3-common php7.3-curl php7.3-mbstring php7.3-mysql php7.3-xml
+#installib php lisamoodulid
 elif [ $php -eq 1 ]; then
-
+#kui php on juba installitud võrdub $php ühega
 	echo "PHP on olemas"
+#ütleb kasutajale et php on juba installitud
 fi
+#skripti lõpp
