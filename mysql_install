@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+#See skript installib mysql serveri
+#
+mysql=$(dpkg-query -W -f='${status}' mysql-server 2>/dev/null | grep -c "ok installed")
+#kontrollib kas php7.3 on juba installitud või mitte
+if [ $mysql -eq 0 ]; then
+#kui $mysql võrdub nulliga siis ei ole mysql installitud
+	echo "Mysql installitakse"
+#ütleb kasutajale et mysql installitakse
+
+elif [ $mysql -eq 1 ]; then
+#kui mysql on juba installitud võrdub $mysql ühega
+	echo "mysql on olemas"
+#ütleb kasutajale et mysql on juba installitud
+fi
+#skripti lõpp
