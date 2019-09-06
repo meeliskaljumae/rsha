@@ -8,7 +8,10 @@ if [ $mysql -eq 0 ]; then
 #kui $mysql võrdub nulliga siis ei ole mysql installitud
 	echo "Mysql installitakse"
 #ütleb kasutajale et mysql installitakse
-
+apt update
+#uuendab repositore
+apt install mysql-server
+#installib mysql-serveri
 elif [ $mysql -eq 1 ]; then
 #kui mysql on juba installitud võrdub $mysql ühega
 	echo "mysql on olemas"
