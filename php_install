@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+#
+#
+php=$(dpkg-query -W -f='${status}' apache2 2>/dev/null | grep -c "ok installed")
+if [ $php -eq 0 ]; then
+	echo "PHP installitakse"
+elif [ $php -eq 1 ]; then
+
+	echo "PHP on olemas"
+fi
