@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+#See skript installib myphpadmin serveri
+#
+myphp=$(dpkg-query -W -f='${status}' phpmyadmin 2>/dev/null | grep -c "ok installed")
+#kontrollib kas phpmyadmin on juba installitud või mitte
+if [ $myphp -eq 0 ]; then
+#kui $myphpadmin võrdub nulliga siis ei ole myphpadmin installitud
+	echo "Myphpadmin installitakse"
+#ütleb kasutajale et myphpadmin installitakse
+apt update
+#uuendab repositore
+apt install phpmyadmin php-mbstring php-gettext
+#installib myphpadmin
+elif [ $myphp -eq 1 ]; then
+#kui myphpadmin on juba installitud võrdub $myphpadmin ühega
+	echo "myphpadmin on olemas"
+#ütleb kasutajale et myphpadmin on juba installitud
+fi
+#skripti lõpp
